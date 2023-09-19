@@ -154,6 +154,7 @@ public class BeerClientMockTest {
 
         mockRestServiceServer.expect(method(HttpMethod.GET))
                 .andExpect(requestTo(uri))
+                .andExpect(header("Authorization", "Basic dXNlcjpwYXNzd29yZA=="))
                 .andExpect(queryParam("beerName", "ALE"))
                 .andRespond(withSuccess(response, MediaType.APPLICATION_JSON));
 
@@ -183,4 +184,5 @@ public class BeerClientMockTest {
     BeerDTOPageImpl getPage(){
         return new BeerDTOPageImpl(Arrays.asList(getBeerDto()), 1, 25, 1);
     }
+
 }
